@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "prepublish": "npm run build",
-    "test": "babel-tape-runner tests/index.js"
+    "test": "babel-tape-runner tests/*.js"
   },
   "keywords": [
     "redux",
