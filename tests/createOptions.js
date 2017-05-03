@@ -68,4 +68,15 @@ test('createOptions function', function(t) {
     t.equal(options.headers['Authorization'], auth, 'should keep passed headers');
     t.end();
   });
+
+  t.test('when additional properties', function(t) {
+    const qs = {};
+    const action = {
+      url: 'someUrl',
+      method: 'GET',
+      qs
+    };
+    t.equal(createOptions(action).qs, qs, 'should have additional property');
+    t.end();
+  });
 });
