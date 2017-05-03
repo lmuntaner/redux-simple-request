@@ -1,9 +1,13 @@
 export default (action) => {
-  const options = {
-    method: action.method || 'GET',
+  const newOptions = {
+    method: 'GET',
     uri: action.url,
     json: true,
   };
+
+  const options = Object.assign({}, newOptions, action);
+  delete options.url;
+  delete options.type;
 
   if (action.headers) {
     options.headers = action.headers;

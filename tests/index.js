@@ -100,20 +100,18 @@ test('Middleware', function (t) {
         uri: 'www.url.com/some/path',
         json: true,
       };
-      const expectedAction = {
-        type: API,
-        url: 'www.url.com/some/path',
-      };
       const action = {
         type: API,
         url: '/some/path',
       };
-      const beforeRequestSpy = sandbox.stub().returns(expectedAction);
+      const beforeRequest = (passedAction) => {
+        t.true(action === passedAction, 'before request is called with action');
+        action.url = 'www.url.com/some/path';
+      };
       const request = sandbox.stub().returns(Promise.resolve());
-      const { lastStep } = createLastStep(request, sandbox, { beforeRequest: beforeRequestSpy });
+      const { lastStep } = createLastStep(request, sandbox, { beforeRequest });
       lastStep(action)
         .then(() => {
-          t.true(beforeRequestSpy.calledWith(action), 'should call beforeRequest with action');
           t.true(request.calledWith(expectedOptions), 'should use action created by beforeRequest');
           sandbox.restore();
           t.end();

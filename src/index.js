@@ -12,7 +12,7 @@ const middleware = (request) => ({ beforeRequest } = {}) => ({ dispatch, getStat
   }
 
   if (typeof beforeRequest === 'function') {
-    action = beforeRequest(action, dispatch, getState);
+    beforeRequest(action, dispatch, getState);
   }
 
   if (typeof action.onProgress === 'function') {
