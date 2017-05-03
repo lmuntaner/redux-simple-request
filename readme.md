@@ -59,14 +59,14 @@ Then it will dispatch the `addUsers` action with the response data.
 
 | Property | Mandatory? | Type | Description |
 | -------- | ---------- | ---- | ----------- |
-| type      | Yes | string | You have to use the API constant that you import from the package |
-| url      | Yes | string | Just give it the url where you want to make your request |
-| method | No | string | HTTP Method for the request. Default `GET` |
-| data | No | object | Data that needs to be sent with the request |
-| headers | No | object | Headers for the request |
-| onSuccess | No | function | This function will be called if the request is successful. `onSuccess(data, dispatch, getState)`. Parameters passed are the response data, dispatcher and getState |
-| onError | No | function | This function will be called if the request is not successful. `onError(error, dispatch, getState)`. Parameters passed are the error, dispatcher and getState |
-| onProgress | No | function | This function will be called before making the request. `onProgress(action, dispatch, getState)`. Parameters passed are the action, dispatcher and getState |
+| type      | Yes | `string` | You have to use the API constant that you import from the package |
+| url      | Yes | `string` | Just give it the url where you want to make your request |
+| method | No | `string` | HTTP Method for the request. Default `GET` |
+| data | No | `object` | Data that needs to be sent with the request |
+| headers | No | `object` | Headers for the request |
+| onSuccess | No | `function` | This function will be called if the request is successful. `onSuccess(data, dispatch, getState)`. Parameters passed are the response data, dispatcher and getState |
+| onError | No | `function` | This function will be called if the request is not successful. `onError(error, dispatch, getState)`. Parameters passed are the error, dispatcher and getState |
+| onProgress | No | `function` | This function will be called before making the request. `onProgress(action, dispatch, getState)`. Parameters passed are the action, dispatcher and getState |
 
 Plus all the additional properties that can be used with [Request](https://github.com/request/request#requestoptions-callback)
 
@@ -76,7 +76,7 @@ Plus all the additional properties that can be used with [Request](https://githu
 
 | Property      | Mandatory? | Type | Description |
 | ------------- | ---------- | -----| ----------- |
-| beforeRequest | No | function | This function will be called for every request. Before the onProgress. `beforeRequest(action, dispatch, getState)`. Parameters are the action, dispatcher and getState |
+| beforeRequest | No | `function` | This function will be called for every request. Before the onProgress. `beforeRequest(action, dispatch, getState)`. Parameters are the action, dispatcher and getState |
 
 **Use cases**
 
