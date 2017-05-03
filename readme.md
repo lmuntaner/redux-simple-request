@@ -1,6 +1,6 @@
 # Redux Simple Request
 
-Middleware for [Redux](redux.js.org) to manage requests.
+Middleware for [Redux](http://redux.js.org) to manage requests.
 
 Works in the server as in the browser.
 
@@ -76,7 +76,7 @@ Plus all the additional properties that can be used with [Request](https://githu
 
 | Property      | Mandatory? | Type | Description |
 | ------------- | ---------- | -----| ----------- |
-| beforeRequest | Yes | function | This function will be called for every request. Before the onProgress. `beforeRequest(action, dispatch, getState)`. Parameters are the action, dispatcher and getState |
+| beforeRequest | No | function | This function will be called for every request. Before the onProgress. `beforeRequest(action, dispatch, getState)`. Parameters are the action, dispatcher and getState |
 
 **Use cases**
 
