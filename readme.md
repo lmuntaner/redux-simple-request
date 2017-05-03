@@ -57,8 +57,8 @@ Then it will dispatch the `addUsers` action with the response data.
 
 ### Action Properties
 
-| Property | Is Mandatory? | Type | Description  |
-| -------- | ------------- | ---- | -----------  |
+| Property | Mandatory? | Type | Description |
+| -------- | ---------- | ---- | ----------- |
 | type      | Yes | string | You have to use the API constant that you import from the package |
 | url      | Yes | string | Just give it the url where you want to make your request |
 | method | No | string | HTTP Method for the request. Default `GET` |
