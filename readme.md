@@ -74,8 +74,8 @@ Plus all the additional properties that can be used with [Request](https://githu
 
 `createApiMiddleware()` expects an options object.
 
-| Property      | Is Mandatory? | Type | Description  |
-| ------------- | ------------- | -----|
+| Property      | Is Mandatory? | Type | Description |
+| ------------- | ------------- | -----| ----------- |
 | beforeRequest | Yes | function | This function will be called for every request. Before the onProgress. `beforeRequest(action, dispatch, getState)`. Parameters are the action, dispatcher and getState |
 
 **Use cases**
