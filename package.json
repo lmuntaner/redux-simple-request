@@ -15,6 +15,10 @@
     "request",
     "redux-middleware"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lmuntaner/redux-simple-request.git"
+  },
   "author": "Llorenç Muntaner <llorenc.muntaner@gmail.com>",
   "license": "MIT",
   "dependencies": {
