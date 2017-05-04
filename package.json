@@ -1,6 +1,6 @@
 {
   "name": "redux-simple-request",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Redux Middleware to handle API requests",
   "main": "lib/index.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "type": "git",
     "url": "https://github.com/lmuntaner/redux-simple-request.git"
   },
+  "bugs": "https://github.com/lmuntaner/redux-simple-request/issues",
   "author": "Llorenç Muntaner <llorenc.muntaner@gmail.com>",
   "license": "MIT",
   "dependencies": {
