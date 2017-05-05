@@ -27,7 +27,7 @@ export default createStore(
 ```
 
 - Import the creator: `import createApiMiddleware from 'redux-simple-request';`.
-- Create middleware: `const apiMiddleware = createApiMiddleware();`. Options can be passed. Check [Advanced]().
+- Create middleware: `const apiMiddleware = createApiMiddleware();`. Options can be passed. Check [Advanced](#advanced).
 - Add to Store: `applyMiddleware(apiMiddleware)`.
 
 ### Usage
