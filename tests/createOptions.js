@@ -2,8 +2,8 @@ import test from 'tape';
 
 import createOptions from '../src/createOptions';
 
-test('createOptions function', function(t) {
-  t.test('creates options properties', function(t) {
+test('createOptions function', (t) => {
+  t.test('creates options properties', (t1) => {
     const url = 'someUrl';
     const expected = {
       uri: url,
@@ -15,30 +15,30 @@ test('createOptions function', function(t) {
       method: 'GET',
     };
 
-    t.deepEqual(createOptions(action), expected, 'should create uri, json and method property');
-    t.end();
+    t1.deepEqual(createOptions(action), expected, 'should create uri, json and method property');
+    t1.end();
   });
 
-  t.test('when no method property', function(t) {
+  t.test('when no method property', (t1) => {
     const action = {
       url: 'someUrl',
     };
-    t.equal(createOptions(action).method, 'GET', 'should add "GET" to method property');
-    t.end();
+    t1.equal(createOptions(action).method, 'GET', 'should add "GET" to method property');
+    t1.end();
   });
 
-  t.test('when headers property', function(t) {
+  t.test('when headers property', (t1) => {
     const headers = {};
     const action = {
       url: 'someUrl',
       method: 'GET',
       headers,
     };
-    t.equal(createOptions(action).headers, headers, 'should add "headers" property');
-    t.end();
+    t1.equal(createOptions(action).headers, headers, 'should add "headers" property');
+    t1.end();
   });
 
-  t.test('when data is in the action', function(t) {
+  t.test('when data is in the action', (t1) => {
     const data = {};
     const action = {
       url: 'someUrl',
@@ -46,37 +46,37 @@ test('createOptions function', function(t) {
       headers: {
         'Content-Type': 'application/json',
       },
-      data
+      data,
     };
-    t.deepEqual(createOptions(action).body, data, 'should add "body" property');
-    t.end();
+    t1.deepEqual(createOptions(action).body, data, 'should add "body" property');
+    t1.end();
   });
 
-  t.test('when data is in the action but no Content-Type header', function(t) {
+  t.test('when data is in the action but no Content-Type header', (t1) => {
     const data = {};
     const auth = 'SomethingCool';
     const action = {
       url: 'someUrl',
       method: 'POST',
       headers: {
-        'Authorization': auth,
+        Authorization: auth,
       },
-      data
+      data,
     };
     const options = createOptions(action);
-    t.equal(options.headers['Content-Type'], 'application/json', 'should add "Content-Type" header');
-    t.equal(options.headers['Authorization'], auth, 'should keep passed headers');
-    t.end();
+    t1.equal(options.headers['Content-Type'], 'application/json', 'should add "Content-Type" header');
+    t1.equal(options.headers.Authorization, auth, 'should keep passed headers');
+    t1.end();
   });
 
-  t.test('when additional properties', function(t) {
+  t.test('when additional properties', (t1) => {
     const qs = {};
     const action = {
       url: 'someUrl',
       method: 'GET',
-      qs
+      qs,
     };
-    t.equal(createOptions(action).qs, qs, 'should have additional property');
-    t.end();
+    t1.equal(createOptions(action).qs, qs, 'should have additional property');
+    t1.end();
   });
 });
