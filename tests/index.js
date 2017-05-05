@@ -14,30 +14,30 @@ function createStore(sandbox) {
 
 function createLastStep(request, sandbox, options) {
   const storeSpy = createStore(sandbox);
-  const middlewareCreator = configureMiddleware(request);
-  const middleware = middlewareCreator(options);
+  const middlewareCreatorConfigured = configureMiddleware(request);
+  const middleware = middlewareCreatorConfigured(options);
   const nextSpy = sandbox.spy();
 
   return {
     lastStep: middleware(storeSpy)(nextSpy),
     storeSpy,
     nextSpy,
-  }
+  };
 }
 
-test('Middleware', function (t) {
-  t.test('import default', function(t) {
-    t.equal(typeof middlewareCreator, 'function', 'is a function');
+test('Middleware', (t) => {
+  t.test('import default', (t1) => {
+    t1.equal(typeof middlewareCreator, 'function', 'is a function');
     const middleware = middlewareCreator();
-    t.equal(typeof middlewareCreator, 'function', 'should create a function when called');
+    t1.equal(typeof middlewareCreator, 'function', 'should create a function when called');
     const lastStep = middleware({})();
-    t.equal(lastStep.length, 1, 'should create a last step expecting 1 parameter');
-    t.end();
+    t1.equal(lastStep.length, 1, 'should create a last step expecting 1 parameter');
+    t1.end();
   });
 
-  t.test('configureMiddleware', function(t) {
-    t.test('without beforeRequest parameter', function(t) {
-      t.test('called with API Action Type and onSuccess', function(t) {
+  t.test('configureMiddleware', (t1) => {
+    t1.test('without beforeRequest parameter', (t2) => {
+      t2.test('called with API Action Type and onSuccess', (t3) => {
         const sandbox = sinon.sandbox.create();
         const successSpy = sandbox.spy();
         const action = {
@@ -50,18 +50,18 @@ test('Middleware', function (t) {
         const { lastStep, nextSpy, storeSpy } = createLastStep(request, sandbox);
         lastStep(action)
           .then(() => {
-            t.false(nextSpy.called, 'should not call next');
-            t.true(request.called, 'should call request');
-            t.false(storeSpy.dispatch.called, 'should not call dispatch');
-            t.false(storeSpy.getState.called, 'should not call getState');
-            t.true(successSpy.calledWith(data), 'should call success callback with API response');
-            t.true(true, 'last step returns a promise');
+            t3.false(nextSpy.called, 'should not call next');
+            t3.true(request.called, 'should call request');
+            t3.false(storeSpy.dispatch.called, 'should not call dispatch');
+            t3.false(storeSpy.getState.called, 'should not call getState');
+            t3.true(successSpy.calledWith(data), 'should call success callback with API response');
+            t3.true(true, 'last step returns a promise');
             sandbox.restore();
-            t.end();
+            t3.end();
           });
       });
 
-      t.test('called with API Action Type and onProgress', function(t) {
+      t2.test('called with API Action Type and onProgress', (t3) => {
         const sandbox = sinon.sandbox.create();
         const progressSpy = sandbox.spy();
         const action = {
@@ -72,28 +72,28 @@ test('Middleware', function (t) {
         const request = sandbox.stub().returns(Promise.resolve());
         const { lastStep } = createLastStep(request, sandbox);
         lastStep(action);
-        t.true(progressSpy.calledWith(action), 'should call progress callback with action');
+        t3.true(progressSpy.calledWith(action), 'should call progress callback with action');
         sandbox.restore();
-        t.end();
+        t3.end();
       });
 
-      t.test('called not API Action Type', function(t) {
+      t2.test('called not API Action Type', (t3) => {
         const sandbox = sinon.sandbox.create();
         const action = {
           type: 'notAPI',
-        }
+        };
 
         const request = sandbox.spy();
         const { lastStep, nextSpy } = createLastStep(request, sandbox);
         lastStep(action);
-        t.false(request.called, 'should not call request');
-        t.true(nextSpy.calledWith(action), 'should call next with action');
+        t3.false(request.called, 'should not call request');
+        t3.true(nextSpy.calledWith(action), 'should call next with action');
         sandbox.restore();
-        t.end();
+        t3.end();
       });
     });
 
-    t.test('with beforeRequest parameter', function(t) {
+    t1.test('with beforeRequest parameter', (t2) => {
       const sandbox = sinon.sandbox.create();
       const expectedOptions = {
         method: 'GET',
@@ -105,17 +105,17 @@ test('Middleware', function (t) {
         url: '/some/path',
       };
       const beforeRequest = (passedAction) => {
-        t.true(action === passedAction, 'before request is called with action');
+        t2.true(action === passedAction, 'before request is called with action');
         action.url = 'www.url.com/some/path';
       };
       const request = sandbox.stub().returns(Promise.resolve());
       const { lastStep } = createLastStep(request, sandbox, { beforeRequest });
       lastStep(action)
         .then(() => {
-          t.true(request.calledWith(expectedOptions), 'should use action created by beforeRequest');
+          t2.true(request.calledWith(expectedOptions), 'should use action created by beforeRequest');
           sandbox.restore();
-          t.end();
-        })
+          t2.end();
+        });
     });
   });
 });

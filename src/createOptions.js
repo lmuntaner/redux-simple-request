@@ -20,4 +20,4 @@ export default (action) => {
   }
 
   return options;
-}
+};

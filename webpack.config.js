@@ -1,12 +1,12 @@
-var path = require('path');
+const path = require('path');
 
 module.exports = {
-  entry: __dirname + '/src/index.js',
+  entry: `${__dirname}/src/index.js`,
   output: {
     path: path.resolve(__dirname),
     filename: 'lib/index.js',
     library: 'ReduxSimpleRequest',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
@@ -15,14 +15,14 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         options: {
-          presets: ['es2015']
-        }
-      }
-    ]
+          presets: ['es2015'],
+        },
+      },
+    ],
   },
   node: {
     fs: 'empty',
     net: 'empty',
-    tls: 'empty'
-  }
-}
+    tls: 'empty',
+  },
+};

@@ -1,11 +1,13 @@
 {
   "name": "redux-simple-request",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Redux Middleware to handle API requests",
   "main": "lib/index.js",
   "scripts": {
     "build": "webpack",
     "clean": "rm -rf lib",
+    "lint": "eslint src test",
+    "posttest": "npm run lint",
     "prepublish": "npm run clean && npm test && npm run build",
     "test": "babel-tape-runner tests/*.js"
   },
@@ -31,6 +33,9 @@
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-tape-runner": "^2.0.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
     "sinon": "^2.2.0",
     "tape": "^4.6.3",
     "webpack": "^2.4.1"
