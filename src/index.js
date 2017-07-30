@@ -28,7 +28,7 @@ const middleware = request =>
 
     return request(options)
       .then(data => action.onSuccess && action.onSuccess(data, dispatch, getState))
-      .catch(err => action.error && action.error(err, dispatch, getState));
+      .catch(err => action.onError && action.onError(err, dispatch, getState));
   };
 
 export const configureMiddleware = middleware;
